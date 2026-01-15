@@ -43,7 +43,7 @@ jobs:
           echo "      account: ${{ secrets.SNOWFLAKE_ACCOUNT }}" >> ~/.dbt/profiles.yml
           echo "      database: DEV_FRAUD_DETECTION" >> ~/.dbt/profiles.yml
           echo "      authenticator: snowflake_jwt" >> ~/.dbt/profiles.yml
-          echo "      private_key_path: "/tmp/snowflake_key.p8" >> ~/.dbt/profiles.yml
+          echo "      private_key_path: /tmp/snowflake_key.p8" >> ~/.dbt/profiles.yml
           echo "      role: ACCOUNTADMIN" >> ~/.dbt/profiles.yml
           echo "      schema: PUBLIC" >> ~/.dbt/profiles.yml
           echo "      threads: 2" >> ~/.dbt/profiles.yml
@@ -54,7 +54,7 @@ jobs:
           echo "      account: ${{ secrets.SNOWFLAKE_ACCOUNT }}" >> ~/.dbt/profiles.yml
           echo "      database: PROD_FRAUD_DETECTION" >> ~/.dbt/profiles.yml
           echo "      authenticator: snowflake_jwt" >> ~/.dbt/profiles.yml
-          echo "      private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> ~/.dbt/profiles.yml
+          echo "      private_key_path: /tmp/snowflake_key.p8" >> ~/.dbt/profiles.yml
           echo "      role: ACCOUNTADMIN" >> ~/.dbt/profiles.yml
           echo "      schema: PUBLIC" >> ~/.dbt/profiles.yml
           echo "      threads: 2" >> ~/.dbt/profiles.yml
@@ -107,7 +107,7 @@ jobs:
           echo "      account: ${{ secrets.SNOWFLAKE_ACCOUNT }}" >> ~/.dbt/profiles.yml
           echo "      database: DEV_EMEKA_FRAUD_DETECTION" >> ~/.dbt/profiles.yml
           echo "      authenticator: snowflake_jwt" >> ~/.dbt/profiles.yml
-          echo "      private_key_path: "/tmp/snowflake_key.p8" >> ~/.dbt/profiles.yml
+          echo "      private_key_path: /tmp/snowflake_key.p8" >> ~/.dbt/profiles.yml
           echo "      role: ACCOUNTADMIN" >> ~/.dbt/profiles.yml
           echo "      schema: PUBLIC" >> ~/.dbt/profiles.yml
           echo "      threads: 2" >> ~/.dbt/profiles.yml
@@ -118,7 +118,7 @@ jobs:
           echo "      account: ${{ secrets.SNOWFLAKE_ACCOUNT }}" >> ~/.dbt/profiles.yml
           echo "      database: PROD_FRAUD_DETECTION2" >> ~/.dbt/profiles.yml
           echo "      authenticator: snowflake_jwt" >> ~/.dbt/profiles.yml
-          echo "      private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> ~/.dbt/profiles.yml
+          echo "      private_key_path: /tmp/snowflake_key.p8" >> ~/.dbt/profiles.yml
           echo "      role: ACCOUNTADMIN" >> ~/.dbt/profiles.yml
           echo "      schema: PUBLIC" >> ~/.dbt/profiles.yml
           echo "      threads: 2" >> ~/.dbt/profiles.yml
