@@ -1,0 +1,12 @@
+
+
+version: 2
+
+sources:
+  - name: fraud_detection
+    database: "{{ target.database }}"  # Using the database dynamically based on the active target
+    schema: PUBLIC
+
+    tables:
+      - name: transactions_staging
+        description: "Raw transactions data from S3."
