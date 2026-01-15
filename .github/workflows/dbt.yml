@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - dev  # Run tests on dev branch pushes  
-      - master  # Deploy to production when pushing to master
+      - master  # Deploy to production when pushing to maste
 
 jobs:
   test:
