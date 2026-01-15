@@ -3,11 +3,11 @@ name: CI/CD for dbt Project
 on:
   pull_request:
     branches:
-      - master  # Run tests when a PR targets master
+      - main  # Run tests when a PR targets master
   push:
     branches:
       - dev  # Run tests on dev branch pushes  
-      - master  # Deploy to production when pushing to maste
+      - main  # Deploy to production when pushing to maste
 
 jobs:
   test:
@@ -76,7 +76,7 @@ jobs:
   deploy:
     needs: test  # Only run if tests pass
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - name: Checkout code
