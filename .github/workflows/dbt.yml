@@ -28,6 +28,12 @@ jobs:
           source dbt-env/bin/activate
           pip install dbt-core dbt-snowflake
 
+      - name: Set up Snowflake credentials
+        run: |
+            echo "SNOWFLAKE_USER=${{ secrets.SNOWFLAKE_USER }}" >> $GITHUB_ENV
+            echo "SNOWFLAKE_ACCOUNT=${{ secrets.SNOWFLAKE_ACCOUNT }}" >> $GITHUB_ENV
+            echo "SNOWFLAKE_PRIVATE_KEY=${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> $GITHUB_ENV
+
 
       - name: Set up dbt profiles
         run: |
@@ -38,7 +44,7 @@ jobs:
           echo "      account: ${{ secrets.SNOWFLAKE_ACCOUNT }}" >> ~/.dbt/profiles.yml
           echo "      database: DEV_FRAUD_DETECTION" >> ~/.dbt/profiles.yml
           echo "      authenticator: snowflake_jwt" >> ~/.dbt/profiles.yml
-          echo "      private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> ~/.dbt/profiles.yml
+          echo "      private_key: {{ env_var('SNOWFLAKE_PRIVATE_KEY') }}" >> ~/.dbt/profiles.yml
           echo "      role: ACCOUNTADMIN" >> ~/.dbt/profiles.yml
           echo "      schema: PUBLIC" >> ~/.dbt/profiles.yml
           echo "      threads: 2" >> ~/.dbt/profiles.yml
@@ -89,6 +95,12 @@ jobs:
           pip install dbt-core dbt-snowflake
 
 
+      - name: Set up Snowflake credentials
+        run: |
+            echo "SNOWFLAKE_USER=${{ secrets.SNOWFLAKE_USER }}" >> $GITHUB_ENV
+            echo "SNOWFLAKE_ACCOUNT=${{ secrets.SNOWFLAKE_ACCOUNT }}" >> $GITHUB_ENV
+            echo "SNOWFLAKE_PRIVATE_KEY=${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> $GITHUB_ENV
+
       - name: Set up dbt profiles for prod
         run: |
           mkdir -p ~/.dbt
@@ -98,7 +110,7 @@ jobs:
           echo "      account: ${{ secrets.SNOWFLAKE_ACCOUNT }}" >> ~/.dbt/profiles.yml
           echo "      database: DEV_EMEKA_FRAUD_DETECTION" >> ~/.dbt/profiles.yml
           echo "      authenticator: snowflake_jwt" >> ~/.dbt/profiles.yml
-          echo "      private_key: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" >> ~/.dbt/profiles.yml
+          echo "      private_key: {{ env_var('SNOWFLAKE_PRIVATE_KEY') }}" >> ~/.dbt/profiles.yml
           echo "      role: ACCOUNTADMIN" >> ~/.dbt/profiles.yml
           echo "      schema: PUBLIC" >> ~/.dbt/profiles.yml
           echo "      threads: 2" >> ~/.dbt/profiles.yml
