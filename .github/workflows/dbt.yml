@@ -28,11 +28,11 @@ jobs:
           source dbt-env/bin/activate
           pip install dbt-core dbt-snowflake
 
-      - name: Set up Snowflake credentials
+      - name: Set up Snowflake private key
         run: |
-            echo "SNOWFLAKE_USER=${{ secrets.SNOWFLAKE_USER }}" >> $GITHUB_ENV
-            echo "SNOWFLAKE_ACCOUNT=${{ secrets.SNOWFLAKE_ACCOUNT }}" >> $GITHUB_ENV
-            echo "SNOWFLAKE_PRIVATE_KEY=$(echo ${{ secrets.SNOWFLAKE_PRIVATE_KEY_B64 }} | base64 --decode)" >> $GITHUB_ENV
+            echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY_B64 }}" | base64 --decode > /tmp/snowflake_key.p8
+            chmod 600 /tmp/snowflake_key.p8
+
 
       - name: Set up dbt profiles
         run: |
@@ -43,7 +43,7 @@ jobs:
           echo "      account: ${{ secrets.SNOWFLAKE_ACCOUNT }}" >> ~/.dbt/profiles.yml
           echo "      database: DEV_FRAUD_DETECTION" >> ~/.dbt/profiles.yml
           echo "      authenticator: snowflake_jwt" >> ~/.dbt/profiles.yml
-          echo "      private_key: {{ env_var('SNOWFLAKE_PRIVATE_KEY') }}" >> ~/.dbt/profiles.yml
+          echo "      private_key_path: "/tmp/snowflake_key.p8" >> ~/.dbt/profiles.yml
           echo "      role: ACCOUNTADMIN" >> ~/.dbt/profiles.yml
           echo "      schema: PUBLIC" >> ~/.dbt/profiles.yml
           echo "      threads: 2" >> ~/.dbt/profiles.yml
@@ -93,12 +93,10 @@ jobs:
           source dbt-env/bin/activate
           pip install dbt-core dbt-snowflake
 
-
-      - name: Set up Snowflake credentials
+      - name: Set up Snowflake private key
         run: |
-            echo "SNOWFLAKE_USER=${{ secrets.SNOWFLAKE_USER }}" >> $GITHUB_ENV
-            echo "SNOWFLAKE_ACCOUNT=${{ secrets.SNOWFLAKE_ACCOUNT }}" >> $GITHUB_ENV
-            echo "SNOWFLAKE_PRIVATE_KEY=$(echo ${{ secrets.SNOWFLAKE_PRIVATE_KEY_B64 }} | base64 --decode)" >> $GITHUB_ENV
+          echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY_B64 }}" | base64 --decode > /tmp/snowflake_key.p8
+          chmod 600 /tmp/snowflake_key.p8
 
       - name: Set up dbt profiles for prod
         run: |
@@ -109,7 +107,7 @@ jobs:
           echo "      account: ${{ secrets.SNOWFLAKE_ACCOUNT }}" >> ~/.dbt/profiles.yml
           echo "      database: DEV_EMEKA_FRAUD_DETECTION" >> ~/.dbt/profiles.yml
           echo "      authenticator: snowflake_jwt" >> ~/.dbt/profiles.yml
-          echo "      private_key: {{ env_var('SNOWFLAKE_PRIVATE_KEY') }}" >> ~/.dbt/profiles.yml
+          echo "      private_key_path: "/tmp/snowflake_key.p8" >> ~/.dbt/profiles.yml
           echo "      role: ACCOUNTADMIN" >> ~/.dbt/profiles.yml
           echo "      schema: PUBLIC" >> ~/.dbt/profiles.yml
           echo "      threads: 2" >> ~/.dbt/profiles.yml
