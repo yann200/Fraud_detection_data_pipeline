@@ -133,6 +133,44 @@ Database: PROD_EMEKA_FRAUD_DETECTION2
 Tables and Structure:
 Sample tables include BR_FRAUD_DETECTION_RAW_DATA_HISTORICAL, SI_USERS_DIMENSION, SI_TRANSACTIONS_FACT, and others.
 
+#### Automation with GitHub Actions for CI/CD
+
+This CI/CD workflow is designed to automate testing and deployment for a dbt project. It performs tests on the dev branch and deploys the tested code to production when pushing to the master branch.
+
+**Workflow Breakdown**
+**Trigger Conditions**
+
+- Pull Request to master: When a pull request targets the master branch, the workflow runs the test job to ensure code integrity.
+- Push to dev Branch: When code is pushed to the dev branch, the workflow also runs the test job to validate code changes.
+- Push to master Branch: When code is pushed directly to master (e.g., after merging a PR), the deploy job runs automatically,
+  
+**Jobs**
+
+   **1. Test Job**
+
+Objective: Run tests on the dev environment to validate that new code does not introduce errors.
+Runs-on: ubuntu-latest
+Steps:
+ - Checkout code: Fetches the code from the GitHub repository.
+ - Set up Python: Configures a Python environment with version 3.8.
+ - Install dependencies: Installs dbt-core and dbt-snowflake in a virtual environment to manage Snowflake database connections and dbt commands.
+ - Set up Snowflake credentials: Exports Snowflake credentials from GitHub secrets into environment variables.
+ - Set up dbt profiles: Creates a profiles.yml file to configure connections to the dev and prod Snowflake databases. The target is set to dev.
+ - Run dbt deps: Downloads any external dbt packages specified in the project.
+ - Run dbt test: Runs all defined dbt tests on the dev environment.
+
+  **2. Deploy Job**
+
+Objective: Deploys the code to production if all tests pass on master.
+Conditional Execution: Runs only when a direct push to the master branch occurs (if: github.ref == 'refs/heads/master').
+Runs-on: ubuntu-latest
+Steps:
+ - Checkout code: Fetches the code from the repository.
+ - Set up Python: Configures Python with version 3.8.
+ - Install dependencies: Installs dbt-core and dbt-snowflake in a virtual environment.
+ - Set up Snowflake credentials: Loads credentials from GitHub secrets.
+ - Set up dbt profiles: Recreates profiles.yml with connections to both dev and prod databases, setting the target to prod.
+
 ### 5. Conclusion
 The Fraud Detection Data Pipeline is a robust, end-to-end solution for ingesting, transforming, and analyzing transaction data for fraud detection. By leveraging AWS S3 for storage, Snowflake for data warehousing, dbt for data transformation, and GitHub Actions for automation, the pipeline adheres to best practices in data engineering and ensures data quality and scalability.
 
