@@ -53,3 +53,83 @@ Internal Error
 [0m16:51:09.367021 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002B8027D4DD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002B821287380>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002B823499430>]}
 [0m16:51:09.367759 [debug] [MainThread]: Flushing usage events
 [0m16:51:10.311247 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:03:45.304840 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA0821E570>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA079142F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA07914710>]}
+
+
+============================== 07:03:45.344233 | e5f423e3-cb35-4f4b-bab3-655a72561cff ==============================
+[0m07:03:45.344233 [info ] [MainThread]: Running with dbt=1.11.2
+[0m07:03:45.354215 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\noume\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt docs serve', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\noume\\OneDrive\\Desktop\\recherche_travail\\data_engineer\\DBT-FRAUD-DETECTION-DATA-PIPELINE\\logs'}
+[0m07:03:50.823728 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m07:03:50.824730 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m07:03:50.824730 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m07:03:51.427547 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'e5f423e3-cb35-4f4b-bab3-655a72561cff', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA286F6120>]}
+[0m07:03:51.473274 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'e5f423e3-cb35-4f4b-bab3-655a72561cff', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA261010A0>]}
+[0m07:03:51.525322 [error] [MainThread]: Encountered an error:
+[WinError 2] The system cannot find the file specified: 'C:\\Users\\noume\\OneDrive\\Desktop\\recherche_travail\\data_engineer\\DBT-FRAUD-DETECTION-DATA-PIPELINE\\target'
+[0m07:03:51.714721 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\main.py", line 307, in docs_serve
+    results = task.run()
+              ^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\task\docs\serve.py", line 15, in run
+    os.chdir(self.config.project_target_path)
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\noume\\OneDrive\\Desktop\\recherche_travail\\data_engineer\\DBT-FRAUD-DETECTION-DATA-PIPELINE\\target'
+
+[0m07:03:51.740264 [debug] [MainThread]: Command `dbt docs serve` failed at 07:03:51.740264 after 6.84 seconds
+[0m07:03:51.742264 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA07B54440>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA2872EDB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001FA0736CA70>]}
+[0m07:03:51.744262 [debug] [MainThread]: Flushing usage events
+[0m07:03:52.792376 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m07:05:35.623508 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015640AF2D80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015640AF3260>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001563E1D93A0>]}
+
+
+============================== 07:05:35.634054 | ba9c59d2-47c2-4c51-865a-ea10083652f3 ==============================
+[0m07:05:35.634054 [info ] [MainThread]: Running with dbt=1.11.2
+[0m07:05:35.634587 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\noume\\.dbt', 'indirect_selection': 'eager', 'invocation_command': 'dbt docs serve --port 8081', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'C:\\Users\\noume\\OneDrive\\Desktop\\recherche_travail\\data_engineer\\DBT-FRAUD-DETECTION-DATA-PIPELINE\\logs'}
+[0m07:05:36.745582 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m07:05:36.745582 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m07:05:36.746581 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m07:05:36.996397 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'ba9c59d2-47c2-4c51-865a-ea10083652f3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000156613D20F0>]}
+[0m07:05:37.071492 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'ba9c59d2-47c2-4c51-865a-ea10083652f3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001566119C9E0>]}
+[0m07:05:37.091652 [error] [MainThread]: Encountered an error:
+[WinError 2] The system cannot find the file specified: 'C:\\Users\\noume\\OneDrive\\Desktop\\recherche_travail\\data_engineer\\DBT-FRAUD-DETECTION-DATA-PIPELINE\\target'
+[0m07:05:37.093621 [error] [MainThread]: Traceback (most recent call last):
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\cli\main.py", line 307, in docs_serve
+    results = task.run()
+              ^^^^^^^^^^
+  File "C:\Users\noume\OneDrive\Desktop\recherche_travail\data_engineer\DBT-FRAUD-DETECTION-DATA-PIPELINE\dbt-env\Lib\site-packages\dbt\task\docs\serve.py", line 15, in run
+    os.chdir(self.config.project_target_path)
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\noume\\OneDrive\\Desktop\\recherche_travail\\data_engineer\\DBT-FRAUD-DETECTION-DATA-PIPELINE\\target'
+
+[0m07:05:37.095622 [debug] [MainThread]: Command `dbt docs serve` failed at 07:05:37.095622 after 1.82 seconds
+[0m07:05:37.096675 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001563E2807A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001565E9BF170>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000015640B772F0>]}
+[0m07:05:37.097622 [debug] [MainThread]: Flushing usage events
+[0m07:05:37.767976 [debug] [MainThread]: An error was encountered while trying to flush usage events
